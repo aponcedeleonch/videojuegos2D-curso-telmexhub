@@ -5,17 +5,62 @@
         <meta charset="UTF-8"/>
         <script>
             //Funciones (el return y los argumentos son opcionales) 
-
+			function saludar(){
+				//document.write("Saludamelo");
+			}
             //llamando a la funcion
+            //saludar();
+            
             
             //Funciones anonimas (lambda)
+            var sumar = function(a, b){
+            	var r = a + b;
+            	return r;
+            };
+            
+            var multiplicacion = function(a, b){
+            	var r = a * b;
+            	return r;
+            };
+            
+            var resultado = sumar(3, 5);
+            //document.write(resultado);
+            
             //Scope de una funcion (3 casos)
                       
             //Funcion ANONIMA como parametro de otra función
 
+			var operacion = function(funcionope){
+				var r = funcionope(8, 4);
+				document.write("Resultamelo " + r);
+			};
+			
+			//operacion(sumar);
+			//operacion(multiplicacion);
+
             //Funcion AL VUELO como parametro de otra función
 
+			/*operacion(function(a, b){
+				var r = a - b;
+				return r;
+			});*/
+
             /*--- EJERCICIO LAMBDAS D43 ---*/
+           
+           var buenos_dias = function(){
+           	alert("Buenos dias");
+           };
+           
+           var buenas_noches = function(){
+           	alert("Buenas noches");
+           };
+           
+           function saludar(funcion_saludar){
+           	funcion_saludar();
+           }
+           
+           saludar(buenos_dias);
+           saludar(buenas_noches);
         </script>
     </head>
     <body>

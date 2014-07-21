@@ -5,10 +5,35 @@
         <meta charset="UTF-8"/>
         <script>
             //keyword new
+			var persona = new Object();            
             //metodos y atributos
-
-            //JSON.stringify
-
+			persona.nombre = "Daniela";
+			persona.hablar = function(){
+				document.write("Hola ");
+			};
+			//persona.hablar();
+			
+            //Javascript Object Notation (JSON)
+			
+			var gato = {
+				nombre: "Felix",
+				maulla: function(){
+					document.write("<p>miau</p>");
+				},
+				presentarse: function(){
+					document.write("Mi nombre es " + this.nombre);
+				}
+			};
+			
+			gato.maulla();
+			gato.presentarse();
+			
+			gato.raza = "Siames"; //Creando atritubutos despues de la creacion
+			
+			//JSON.stringify
+			
+			document.write("<p>" + JSON.stringify(gato) +"</p>");
+			
             //con llaves (2 casos)
 
             //this
