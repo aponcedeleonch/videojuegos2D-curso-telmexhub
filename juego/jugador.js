@@ -8,8 +8,9 @@ Q.Sprite.extend("Jugador", {
 		this._super(p, {
 			sheet: "jugador",
 			frame: 1,
-			jumpSpeed: -380,
+			jumpSpeed: -500,
 			speed: 120
 		});
+		this.add("2d, platformerControls");
 	}
 });
