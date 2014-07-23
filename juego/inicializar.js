@@ -1,9 +1,9 @@
-//accedemos a las funcionalidades del engine
+//Accedemos a las funcionalidades del engine
 
 var Q = Quintus();
 
-//el juego se ejecutará en la etiqueta del canvas cuyo id es juego
-//opcionalmente se puede dar como segundo parametro un objeto de configuración
+//El juego se ejecutará en la etiqueta del canvas cuyo id es juego
+//Ppcionalmente se puede dar como segundo parametro un objeto de configuración
 
 Q.setup("juego", { //"juego" es el id del canvas
 	maximize:  true //Desprecia el ancho y el alto del canvas
@@ -11,15 +11,13 @@ Q.setup("juego", { //"juego" es el id del canvas
 	//maximize: "false" //Toma el ancho y el alto del canvas
 });
 
-//modulos a utilizar (6)
+//Modulos a utilizar
 
-Q.include("Sprites, Scenes, 2D, Input, Touch, TMX");
-
+Q.include("Sprites, Scenes, 2D, Input, Touch, TMX, Anim");
 //Q.include("Sprites, Scenes, 2D, Input, Touch, TMX").controls().touch();
 
-//activamos los controles del teclado y controles touch
+//Activamos los controles del teclado y controles touch
 
 Q.controls();
 Q.touch();
-
 //Q.controls().touch();
