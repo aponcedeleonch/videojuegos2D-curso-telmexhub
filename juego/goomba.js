@@ -8,7 +8,7 @@ Q.animations("animacionesGoomba", {
 	},
 	aplastar: {
 		frames: [3],
-		rate: 1/2,
+		rate: 1/4,
 		loop: false,
 		trigger: "destruir" //Como que crea un evento llamado destruir
 	}
@@ -25,7 +25,7 @@ Q.Sprite.extend("Goomba", {
 			sprite: "animacionesGoomba",
 			sheet: "goomba", //Configuracion JSON
 			frame: 0, //Que cuadro en la imagen es el que queremos tomar
-			vx: 170 //Velocidad en x, funciona con movimiento automatico
+			vx: 130 //Velocidad en x, funciona con movimiento automatico
 		});
 		this.add("2d, aiBounce, animation"); //Hace que se mueva automaticamente
 		this.play("caminar"); //Se ejecutara la animacion al crear el sprite
@@ -41,6 +41,10 @@ Q.Sprite.extend("Goomba", {
 	aplasta: function(colision){
 		//Si se colisiona con un objeto de tipo Jugador
 		if(colision.obj.isA("Jugador")){
+			//Poniendo audio
+			Q.audio.play("bump.ogg");
+			//Haciendo rebotar a Mario
+			colision.obj.p.vy = -500;
 			//Ejecuta animacion aplastar
 			this.play("aplastar");
 		}	

@@ -5,6 +5,11 @@ Q.animations("animacionesTortuga", {
 		frames: [0, 1],
 		rate: 1/2,
 		loop: true
+	},
+	enconchar: {
+		frames: [2, 4],
+		rate: 1/4,
+		loop: false	
 	}
 });
 
@@ -19,10 +24,15 @@ Q.Sprite.extend("Tortuga", {
 			sprite: "animacionesTortuga",
 			sheet: "tortuga", //Configuracion JSON
 			frame: 0, //Que cuadro en la imagen es el que queremos tomar
-			vx: 130 //Velocidad en x, funciona con movimiento automatico
+			vx: 120, //Velocidad en x, funciona con movimiento automatico
+			esConcha: false
 		});
 		this.add("2d, aiBounce, animation"); //Hace que se mueva automaticamente
 		this.play("caminar");
+		
+		//Eventos	
+		
+		this.on("bump.top", this, "aconcha");
 	}, 
 	step: function(){
 		//Si vx+, va hacia la derecha (voltear). Si vx- va hacia la izquierda
@@ -30,6 +40,28 @@ Q.Sprite.extend("Tortuga", {
 			this.p.flip = "x";
 		} else{
 			this.p.flip = false;
+		}
+	},
+	aconcha: function(colision){
+		if(colision.obj.isA("Jugador")){
+			//Hacer rebotar a Mario
+			colision.obj.p.vy = -500;
+			
+			Q.audio.play("patada.mp3");
+			
+			if(!this.p.esConcha){		
+				//Cambiar el sheet para poder hacer la tortuga caparazon
+				this.sheet("goomba", true);	
+				this.p.esConcha = true;
+			}
+			
+			this.play("enconchar");
+			
+			if(this.p.vx != 0){
+				this.p.vx = 0;
+			} else{
+				this.p.vx = 500;
+			}
 		}
 	}
 });

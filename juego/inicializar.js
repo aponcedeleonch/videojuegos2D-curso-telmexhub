@@ -1,6 +1,8 @@
 //Accedemos a las funcionalidades del engine
 
-var Q = Quintus();
+var Q = Quintus({
+	audioSupport: ["mp3", "ogg"]
+});
 
 //El juego se ejecutará en la etiqueta del canvas cuyo id es juego
 //Ppcionalmente se puede dar como segundo parametro un objeto de configuración
@@ -13,8 +15,13 @@ Q.setup("juego", { //"juego" es el id del canvas
 
 //Modulos a utilizar
 
-Q.include("Sprites, Scenes, 2D, Input, Touch, TMX, Anim");
+Q.include("Sprites, Scenes, 2D, Input, Touch, TMX, Anim, Audio");
 //Q.include("Sprites, Scenes, 2D, Input, Touch, TMX").controls().touch();
+
+
+//Activamos el sonido
+
+Q.enableSound();
 
 //Activamos los controles del teclado y controles touch
 
