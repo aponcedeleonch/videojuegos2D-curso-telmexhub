@@ -5,6 +5,12 @@ Q.animations("animacionesGoomba", {
 		frames: [0, 1],
 		rate: 1/2,
 		loop: true
+	},
+	aplastar: {
+		frames: [3],
+		rate: 1/2,
+		loop: false,
+		trigger: "destruir"
 	}
 });
 
@@ -23,5 +29,18 @@ Q.Sprite.extend("Goomba", {
 		});
 		this.add("2d, aiBounce, animation"); //Hace que se mueva automaticamente
 		this.play("caminar"); //Se ejecutara la animacion al crear el sprite
+		
+		//Evento al ocurrir una colision con algun Goomba (por arriba)
+		this.on("bump.top", this, "aplasta");
+		this.on("destruir", function(){
+			this.destroy();
+		});
+	},
+	aplasta: function(colision){
+		//Si se colisiona con un objeto de tipo Jugador
+		if(colision.obj.isA("Jugador")){
+			//Goomba muere (ejecuta la animacion, destruye el objeto)
+			this.play("aplastar");
+		}	
 	}
 });
