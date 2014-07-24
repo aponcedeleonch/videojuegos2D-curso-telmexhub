@@ -15,7 +15,7 @@ Q.setup("juego", { //"juego" es el id del canvas
 
 //Modulos a utilizar
 
-Q.include("Sprites, Scenes, 2D, Input, Touch, TMX, Anim, Audio");
+Q.include("Sprites, Scenes, 2D, Input, Touch, TMX, Anim, Audio, UI");
 //Q.include("Sprites, Scenes, 2D, Input, Touch, TMX").controls().touch();
 
 
