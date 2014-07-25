@@ -36,6 +36,8 @@ Q.Sprite.extend("Goomba", {
 		//Cuando se manda a llamar al evento destruir, ejecuta la funcion ahi
 		this.on("destruir", function(){
 			this.destroy();
+			//Incrementando la variable de goombas muertos
+			Q.state.inc("goombasMuertos", 1);
 		});
 	},
 	aplasta: function(colision){
