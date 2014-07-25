@@ -25,7 +25,8 @@ Q.Sprite.extend("Tortuga", {
 			sheet: "tortuga", //Configuracion JSON
 			frame: 0, //Que cuadro en la imagen es el que queremos tomar
 			vx: 120, //Velocidad en x, funciona con movimiento automatico
-			esConcha: false
+			esConcha: false,
+			enemigo: true
 		});
 		this.add("2d, aiBounce, animation"); //Hace que se mueva automaticamente
 		this.play("caminar");

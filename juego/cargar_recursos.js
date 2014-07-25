@@ -3,7 +3,7 @@
 //callback para configurar los sprites
 
 //Carga todos los recursos del mapa
-var recursos = "bump.ogg, patada.mp3, salto_enano.mp3, tema_superficie.mp3, mosaicos_escenario_32x32.png, jugador.json, mio.tmx, mosaicos_mario_enano_30x30.png, goomba.json, mosaicos_enemigos_32x32.png, mosaicos_enemigos_32x46.png, tortuga.json";
+var recursos = "pausa.mp3, bump.ogg, patada.mp3, salto_enano.mp3, tema_superficie.mp3, mosaicos_escenario_32x32.png, jugador.json, mio.tmx, mosaicos_mario_enano_30x30.png, goomba.json, mosaicos_enemigos_32x32.png, mosaicos_enemigos_32x46.png, tortuga.json";
 
 Q.loadTMX(recursos, function() {
 	//Carga las imagenes con sus respectivos archivos de configuracion JSON
@@ -15,20 +15,22 @@ Q.loadTMX(recursos, function() {
 	Q.stageScene("score", 1);
 }, {
 	progressCallback : function(leidos, totales) {
-		/*$(document).ready(function(){
-		 var porcentaje = Math.floor((leidos/totales)*100);
-		 $("#barra").css("width", porcentaje + "%");
-
-		 if(leidos === totales){
-		 $("#contenedor_barra").remove();
-		 }
-		 });*/
-		var porcentaje = Math.floor((leidos / totales) * 100);
+		$(document).ready(function(){
+			var porcentaje = Math.floor((leidos/totales)*100);
+			$("#barra").css("width", porcentaje + "%");
+			
+			if(leidos === totales){
+				$("#contenedor_barra").remove();
+				$("#contenedor-boton").show();
+			}
+		});
+		/*var porcentaje = Math.floor((leidos / totales) * 100);
 		$("#barra").css("width", porcentaje + "%");
 
 		if (leidos === totales) {
 			$("#contenedor_barra").remove();
-		}
+			$("#contenedor-boton").show();
+		}*/
 	}
 });
 
@@ -42,10 +44,20 @@ $(document).ready(function() {
 		//Revisando si el juego esta pausado
 		if (Q.pausado === true) {
 			Q.stage(0).unpause(); //Reanudar el juego
+			
+			//Reproduce la cacion desde el inicio, no importando en que momento fue pausada
+			//Hacer que vuelva a iniciar desde el punto en que se quedo, es algo complicado
+			Q.audio.play("tema_superficie.mp3");
+			//Q.audio.play("pausa.mp3");
+			
 			esteBoton.text("Pausar");
 			Q.pausado = false;
 		} else {
 			Q.stage(0).pause(); //Pausar el juego
+			//Q.audio.stop(); //Para todas las canciones
+			Q.audio.stop("tema_superficie.mp3"); //Para un cancion en especifice
+			Q.audio.play("pausa.mp3");
+			
 			esteBoton.text("Reanudar");
 			Q.pausado = true;
 		}
