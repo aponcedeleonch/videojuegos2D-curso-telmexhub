@@ -41,7 +41,8 @@ Q.Sprite.extend("Jugador", {
 			frame: 1, //Que cuadro en la imagen es el que queremos tomar
 			jumpSpeed: -600, //Salto
 			speed: 150, //Velocidad en x, solo funciona cuando tu controlas el jugador
-			estaVivo: true
+			estaVivo: true,
+			z: 1
 		});
 		this.add("2d, platformerControls, animation, tween"); //Añade controles (2d, controles, animaciones)
 		

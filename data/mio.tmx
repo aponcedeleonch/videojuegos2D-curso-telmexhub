@@ -40,6 +40,19 @@
    </properties>
   </tile>
  </tileset>
+ <tileset firstgid="124" name="mosaicos_objetos" tilewidth="32" tileheight="32">
+  <image source="../images/mosaicos_objetos.png" width="96" height="64"/>
+  <tile id="1">
+   <properties>
+    <property name="Class" value="HongoVida"/>
+   </properties>
+  </tile>
+  <tile id="3">
+   <properties>
+    <property name="Class" value="Caja"/>
+   </properties>
+  </tile>
+ </tileset>
  <layer name="Background_cielo" width="60" height="13">
   <properties>
    <property name="type" value="0"/>
@@ -1329,7 +1342,7 @@
    <tile gid="34"/>
    <tile gid="0"/>
    <tile gid="54"/>
-   <tile gid="54"/>
+   <tile gid="0"/>
    <tile gid="54"/>
    <tile gid="54"/>
    <tile gid="54"/>
@@ -2408,5 +2421,6 @@
   <object gid="107" x="833" y="299"/>
   <object gid="107" x="1637" y="325"/>
   <object gid="117" x="928" y="352"/>
+  <object gid="127" x="544" y="287"/>
  </objectgroup>
 </map>

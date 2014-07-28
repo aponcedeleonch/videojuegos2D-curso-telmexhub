@@ -26,7 +26,8 @@ Q.Sprite.extend("Goomba", {
 			sheet: "goomba", //Configuracion JSON
 			frame: 0, //Que cuadro en la imagen es el que queremos tomar
 			vx: 130, //Velocidad en x, funciona con movimiento automatico
-			enemigo: true
+			enemigo: true,
+			z: 1
 		});
 		this.add("2d, aiBounce, animation"); //Hace que se mueva automaticamente
 		this.play("caminar"); //Se ejecutara la animacion al crear el sprite
