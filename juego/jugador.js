@@ -45,6 +45,32 @@ Q.Sprite.extend("Jugador", {
 		});
 		this.add("2d, platformerControls, animation, tween"); //Añade controles (2d, controles, animaciones)
 		
+		//Evento para escuchar una tuberia
+		this.on("bump.bottom", function(colision){
+			if(colision.obj.isA("TuberiaEntrada") && Q.inputs["down"]){
+				//Cambiando la escena al mapa 
+				Q.stageScene("mundo1Subterraneo", 2);
+								
+			}
+		});
+		
+		//Evento para escuchar una tuberia
+		this.on("bump.right", function(colision){
+			if(colision.obj.isA("TuberiaSalida") && Q.inputs["right"]){
+				//Parar la escena subterranea
+				this.stage.stop();
+				Q.audio.stop();
+				
+				//Volviendo a entrar a la escena principal
+				this.p.escena_previa.start();
+				
+				this.p.x = 1000;
+				this.p.y = 0;
+				
+				this.stage = this.p.escena_previa;
+			}
+		});
+		
 		//Evento de cuando algo choca contra el jugador
 		this.on("bump.left, bump.right, bump.top", function(colision){
 			//Si el objeto con el que se ha topado es un enemigo

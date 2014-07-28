@@ -1,3 +1,23 @@
+//Declarando un componente
+//Normlamente un componente modifica el game loop y sus propiedades
+//Primer argumento el nombre del componente
+//Segundo argumento, opciones de inicializacion
+Q.component("saltarin", {
+	added: function(){
+		//Se ejecuta cuando se agrega a un sprite
+		
+		this.entity.on("step", this, "saltar");
+	},
+	saltar: function(){
+		//Revisando si esta en el suelo
+		if(this.entity.p.vy === 0){
+			//Haciendo saltar a la entidad
+			this.entity.p.vy = -400;
+		}
+	}
+});
+
+
 //Animaciones Tortuga
 
 Q.animations("animacionesTortuga", {
@@ -28,7 +48,7 @@ Q.Sprite.extend("Tortuga", {
 			esConcha: false,
 			enemigo: true
 		});
-		this.add("2d, aiBounce, animation"); //Hace que se mueva automaticamente
+		this.add("2d, aiBounce, animation, saltarin"); //Hace que se mueva automaticamente
 		this.play("caminar");
 		
 		//Eventos	
